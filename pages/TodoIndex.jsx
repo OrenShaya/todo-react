@@ -22,12 +22,6 @@ export function TodoIndex() {
     useEffect(() => {
         setSearchParams(filterBy)
         loadTodos(filterBy)
-        // todoService.query(filterBy)
-        //     .then(todos => setTodos(todos))
-        //     .catch(err => {
-        //         console.eror('err:', err)
-        //         showErrorMsg('Cannot load todos')
-        //     })
     }, [filterBy])
 
     function onRemoveTodo(todoId) {
@@ -39,15 +33,6 @@ export function TodoIndex() {
                 console.log('err:', err)
                 showErrorMsg('Cannot remove todo ' + todoId)
             })
-        // todoService.remove(todoId)
-        //     .then(() => {
-        //         setTodos(prevTodos => prevTodos.filter(todo => todo._id !== todoId))
-        //         showSuccessMsg(`Todo removed`)
-        //     })
-        //     .catch(err => {
-        //         console.log('err:', err)
-        //         showErrorMsg('Cannot remove todo ' + todoId)
-        //     })
     }
 
     function onToggleTodo(todo) {
@@ -60,15 +45,6 @@ export function TodoIndex() {
                 console.log('err:', err)
                 showErrorMsg('Cannot toggle todo ' + todoId)
             })
-        // todoService.save(todoToSave)
-        //     .then((savedTodo) => {
-        //         setTodos(prevTodos => prevTodos.map(currTodo => (currTodo._id !== todo._id) ? currTodo : { ...savedTodo }))
-        //         showSuccessMsg(`Todo is ${(savedTodo.isDone)? 'done' : 'back on your list'}`)
-        //     })
-        //     .catch(err => {
-        //         console.log('err:', err)
-        //         showErrorMsg('Cannot toggle todo ' + todoId)
-        //     })
     }
 
     if (!todos) return <div>Loading...</div>

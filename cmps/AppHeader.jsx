@@ -7,7 +7,7 @@ import { UserMsg } from "./UserMsg.jsx"
 import { LoginSignup } from './LoginSignup.jsx'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
-import { store } from '../store/store.js'
+import { store, SET_COUNT_TODO } from '../store/store.js'
 import { logout } from '../store/action/user.actions.js'
 
 
@@ -15,6 +15,8 @@ export function AppHeader() {
     const navigate = useNavigate()
     const { useSelector } = ReactRedux
     const user = useSelector(storeState => storeState.loggedInUser)
+    let countedTodo = useSelector(storeState => storeState.countedTodo)
+    store.dispatch({ type: SET_COUNT_TODO })
     
     function onLogout() {
         logout()
@@ -38,6 +40,9 @@ export function AppHeader() {
                         <LoginSignup onSetUser={store.loggedInUser} />
                     </section>
                 )}
+                <section className="todo-progress">
+                    {countedTodo}% 
+                </section>
                 <nav className="app-nav">
                     <NavLink to="/" >Home</NavLink>
                     <NavLink to="/about" >About</NavLink>
