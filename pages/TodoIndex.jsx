@@ -7,7 +7,7 @@ import { loadTodos, getFilterFromSearchParams, removeTodo, saveTodo } from "../s
 
 const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
-const { useSelector, useDispatch } = ReactRedux
+const { useSelector } = ReactRedux
 
 export function TodoIndex() {
 

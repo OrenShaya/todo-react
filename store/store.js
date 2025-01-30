@@ -4,7 +4,7 @@ const { createStore, } = Redux
 
 const initialState = {
     todos: [],
-    loggedInUser: userService.getLoggedinUser(),
+    loggedInUser: userService.getLoggedinUser() || userService.getEmptyCredentials(),
 }
 
 //* User
