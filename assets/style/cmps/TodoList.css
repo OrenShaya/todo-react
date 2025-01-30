@@ -1,0 +1,17 @@
+.todo-list {
+    padding: 15px 0 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.todo-list li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 1.6em;
+    color: #5287d9;
+    background-color: var(--clr1bg);
+}
