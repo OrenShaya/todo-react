@@ -52,15 +52,23 @@ export function TodoIndex() {
 
     function onToggleTodo(todo) {
         const todoToSave = { ...todo, isDone: !todo.isDone }
-        todoService.save(todoToSave)
+        saveTodo(todoToSave)
             .then((savedTodo) => {
-                setTodos(prevTodos => prevTodos.map(currTodo => (currTodo._id !== todo._id) ? currTodo : { ...savedTodo }))
                 showSuccessMsg(`Todo is ${(savedTodo.isDone)? 'done' : 'back on your list'}`)
             })
             .catch(err => {
                 console.log('err:', err)
                 showErrorMsg('Cannot toggle todo ' + todoId)
             })
+        // todoService.save(todoToSave)
+        //     .then((savedTodo) => {
+        //         setTodos(prevTodos => prevTodos.map(currTodo => (currTodo._id !== todo._id) ? currTodo : { ...savedTodo }))
+        //         showSuccessMsg(`Todo is ${(savedTodo.isDone)? 'done' : 'back on your list'}`)
+        //     })
+        //     .catch(err => {
+        //         console.log('err:', err)
+        //         showErrorMsg('Cannot toggle todo ' + todoId)
+        //     })
     }
 
     if (!todos) return <div>Loading...</div>

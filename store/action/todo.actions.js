@@ -1,5 +1,5 @@
 import { todoService } from '../../services/todo.service.js'
-import { SET_TODOS, REMOVE_TODO, store } from '../store.js'
+import { SET_TODOS, REMOVE_TODO, UPDATE_TODO, ADD_TODO, store } from '../store.js'
 
 export function loadTodos(filterBy) {
     return todoService.query(filterBy)
