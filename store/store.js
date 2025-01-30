@@ -1,8 +1,15 @@
+import { userService } from "../services/user.service.js"
+
 const { createStore, } = Redux
 
 const initialState = {
     todos: [],
+    loggedInUser: userService.getLoggedinUser(),
 }
+
+//* User
+export const SET_USER = 'SET_USER'
+export const SET_USER_SCORE = 'SET_USER_SCORE'
 
 //* Todos
 export const SET_TODOS = 'SET_TODOS'
@@ -21,6 +28,13 @@ function appReducer(state = initialState, cmd = {}) {
             return {...state, todos: state.todos.filter(todo => todo._id !== cmd.todoId)}
         case UPDATE_TODO:
             return {...state, todos: state.todos.map(todo => todo._id === cmd.todo._id ? cmd.todo : todo)}
+
+        //* User
+        case SET_USER:
+            return { ...state, loggedInUser: cmd.user }
+        case SET_USER_SCORE:
+            const loggedInUser = { ...state.loggedInUser, score: cmd.score }
+            return { ...state, loggedInUser }
 
        default:
             return state

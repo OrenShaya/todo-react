@@ -1,12 +1,13 @@
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
+import { signup, login, getEmptyCredentials } from '../store/action/user.actions.js'
 
 const { useState } = React
 
 export function LoginSignup({ onSetUser }) {
 
     const [isSignup, setIsSignUp] = useState(false)
-    const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
+    const [credentials, setCredentials] = useState(getEmptyCredentials())
 
     function handleChange({ target }) {
         const { name: field, value } = target
@@ -20,14 +21,16 @@ export function LoginSignup({ onSetUser }) {
 
 
     function onLogin(credentials) {
-        isSignup ? signup(credentials) : login(credentials)
+        isSignup ? signup(credentials) : logIn(credentials)
     }
 
-    function login(credentials) {
-        userService.login(credentials)
-            .then(onSetUser)
+    function logIn(credentials) {
+        login(credentials)
             .then(() => { showSuccessMsg('Logged in successfully') })
-            .catch((err) => { showErrorMsg('Oops try again') })
+            .catch((err) => { 
+                console.log(err)
+                showErrorMsg('Oops try again') 
+            })
     }
 
     function signup(credentials) {

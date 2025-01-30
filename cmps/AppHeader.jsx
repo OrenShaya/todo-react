@@ -7,10 +7,14 @@ import { UserMsg } from "./UserMsg.jsx"
 import { LoginSignup } from './LoginSignup.jsx'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
+import { store } from '../store/store.js'
+import {  } from '../store/action/user.actions.js'
+
 
 export function AppHeader() {
     const navigate = useNavigate()
-    const [user, setUser] = useState(userService.getLoggedinUser())
+    // const [user, setUser] = useState(userService.getLoggedinUser())
+    const [user, setUser] = useState(store.loggedInUser)
     
     function onLogout() {
         userService.logout()
