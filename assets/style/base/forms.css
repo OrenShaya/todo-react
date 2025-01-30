@@ -19,10 +19,12 @@ input {
     padding: 3px 0 3px 10px;
     margin-right: 1em;
     justify-self: center;
-    background-color: #fff7a6;
+    background-color: #50c5cf;
+    color: black;
 }
 
 input:focus {
     background-color: var(--clr1bg);
+    color: #50c5cf;
     transition: background-color 1s;
 }
