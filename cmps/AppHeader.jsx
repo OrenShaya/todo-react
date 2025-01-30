@@ -13,7 +13,6 @@ import { logout } from '../store/action/user.actions.js'
 
 export function AppHeader() {
     const navigate = useNavigate()
-    // const [user, setUser] = useState(userService.getLoggedinUser())
     const { useSelector } = ReactRedux
     const user = useSelector(storeState => storeState.loggedInUser)
     

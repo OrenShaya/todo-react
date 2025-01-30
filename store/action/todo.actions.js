@@ -17,14 +17,16 @@ export function getFilterFromSearchParams(searchParams) {
 }
 
 export function removeTodo(todoId) {
-    return todoService.remove(todoId)
-        .then(() => {
-            store.dispatch({ type: REMOVE_TODO, todoId })
-        })
-        .catch(err => {
-            console.log('todo action -> Cannot remove todo', err)
-            throw err
-        })
+    if (confirm('Are you sure you want to delete this todo item?')) {
+        return todoService.remove(todoId)
+            .then(() => {
+                store.dispatch({ type: REMOVE_TODO, todoId })
+            })
+            .catch(err => {
+                console.log('todo action -> Cannot remove todo', err)
+                throw err
+            })
+    }
 }
 
 export function saveTodo(incomingTodo) {
